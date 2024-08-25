@@ -2,5 +2,16 @@ alphabet = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n'
 
 action = input("Type 'encode' to encrypt or 'decode' to decrypt:\n").lower()
 text = input("Enter your message:\n").lower()
-shift = input("Enter shift number:\n").lower()
+shift = int(input("Enter shift number:\n"))
 
+
+def encrypt(original_text, shift_amount):
+    output_text = ""
+    for char in original_text:
+        shifted_index = alphabet.index(char) + shift_amount
+        shifted_index = shifted_index % len(alphabet)
+        output_text += alphabet[shifted_index]
+    print(f"Encrypted message: {output_text}")
+
+
+encrypt(text, shift)
